@@ -4,5 +4,43 @@
 // Variables
 @import 'variables';
 
+@import '../../node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+.side-bar-menu{
+    letter-spacing: 2px;
+}
+
+.sidebar-active::active
+{
+    color: #f8f9fa !important;
+}
+.sidebar-bg{
+    background-color: #282b37 !important;
+}
+.content-bg{
+    background-color: #f4f7fa !important;
+}
+.break{
+
+    width: 1px;
+    height: 32px;
+    background-color: #998181;
+}
+.tab-spacing{
+    letter-spacing: 2px;
+}
+.active-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #8bd639;
+}
+.inactive-dot{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ce0014;
+}
