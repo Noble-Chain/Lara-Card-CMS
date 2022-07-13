@@ -28,6 +28,7 @@
                     </div>
                 </div>
 
+                <!-- Content minu nav start -->
                 <ul class="nav mt-3 border-bottom">
                     <li class="nav-item me-3">
                       <a class="tab-spacing text-secondary ps-0 nav-link fs-6 text-uppercase active" aria-current="page" href="#">All cards</a>
@@ -49,7 +50,14 @@
                         </a>
                     </li>
 
-                  </ul>
+                </ul>
+                <!-- Content minu nav end -->
+
+                <!--card start -->
+                @include('card.index')
+
+                <!--Card end -->
+
 
             </div>
         </div>

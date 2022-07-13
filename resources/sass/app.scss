@@ -33,14 +33,30 @@
     letter-spacing: 2px;
 }
 .active-dot{
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
     background-color: #8bd639;
 }
 .inactive-dot{
-    width: 10px;
-    height: 10px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
     background-color: #ce0014;
+}
+.square{
+    width: 13px;
+    height: 13px;
+    border-radius: 5px;
+    border: 1px solid  #bababa;
+}
+.middle-break{
+    width: 1px;
+    height: 20px;
+    background-color: #c6c4c4;
+}
+.card-line{
+    width: 100%;
+    height: 1px;
+    background-color: #c6c4c4;
 }
