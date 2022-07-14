@@ -3,7 +3,7 @@
         <p class="text-white-50 mb-2 small text-uppercase side-bar-menu">Dashboard ></p>
 
         <div class="">
-            <a class="d-flex align-items-center text-decoration-none text-white-50 sidebar-active" href="#">
+            <a class="d-flex align-items-center text-decoration-none text-white-50 sidebar-active" href="{{ route('card.index') }}">
                 <i class="bi bi-card-text m-2"></i>
                 <p class="mb-0 l side-bar-menu">Cards</p>
             </a>

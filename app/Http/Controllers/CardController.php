@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Card;
 use App\Http\Requests\StoreCardRequest;
 use App\Http\Requests\UpdateCardRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CardController extends Controller
 {
@@ -13,9 +15,14 @@ class CardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     public function index()
     {
-        //
+        $cards = Card::all();
+        return view('card.index',compact('cards'));
     }
 
     /**
@@ -36,7 +43,18 @@ class CardController extends Controller
      */
     public function store(StoreCardRequest $request)
     {
-        //
+        $cards = new Card();
+        $title =  $request->title;
+        $cards->title = $request->title;
+        $cards->slug = Str::slug($title);
+        $cards->category = $request->category;
+        $cards->description = $request->description;
+        $cards->excert = Str::words($request->description,15," ...");
+        $cards->user_id = Auth::id();
+        $cards->save();
+
+        return to_route('card.index')->with('status','Card created sucessfully');
+        // return to_route('card.index',compact('cards'))->with('status','Card created sucessfully');
     }
 
     /**
@@ -47,7 +65,7 @@ class CardController extends Controller
      */
     public function show(Card $card)
     {
-        //
+        return view('card.show',compact('card'));
     }
 
     /**
@@ -58,7 +76,7 @@ class CardController extends Controller
      */
     public function edit(Card $card)
     {
-        //
+        return view('card.edit',compact('card'));
     }
 
     /**
@@ -70,7 +88,18 @@ class CardController extends Controller
      */
     public function update(UpdateCardRequest $request, Card $card)
     {
-        //
+        
+        $title =  $request->title;
+        $card->title = $request->title;
+        $card->slug = Str::slug($title);
+        $card->category = $request->category;
+        $card->description = $request->description;
+        $card->excert = Str::words($request->description,15," ...");
+        $card->user_id = Auth::id();
+        $card->update();
+
+        return to_route('card.index')->with('status','Card updated sucessfully');
+
     }
 
     /**

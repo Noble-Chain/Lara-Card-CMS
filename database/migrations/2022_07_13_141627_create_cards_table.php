@@ -14,7 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('cards', function (Blueprint $table) {
+
             $table->id();
+            $table->string('title');
+            $table->string('slug');
+            $table->string('category');
+            $table->longText('description');
+            $table->string('excert');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
