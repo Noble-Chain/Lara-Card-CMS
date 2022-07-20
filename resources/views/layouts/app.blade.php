@@ -72,13 +72,12 @@
             @yield('content')
 
     </div>
+    {{-- @stack('script')
     <script>
-        let closeBtn = document.getElementById('closeBtn');
+        @if(session('status'))
+        window.showToast("{{ session("status") }}")
+        @endif
+    </script> --}}
 
-        closeBtn.addEventListener('click', function () {
-           let adsImage = document.getElementById('adsImage');
-           adsImage.classList.add('d-none');
-        })
-    </script>
 </body>
 </html>

@@ -6,6 +6,7 @@ use App\Models\Card;
 use App\Http\Requests\StoreCardRequest;
 use App\Http\Requests\UpdateCardRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class CardController extends Controller
@@ -53,7 +54,7 @@ class CardController extends Controller
         $cards->user_id = Auth::id();
         $cards->save();
 
-        return to_route('card.index')->with('status','Card created sucessfully');
+        return to_route('card.index')->with('status', $title.' created sucessfully');
         // return to_route('card.index',compact('cards'))->with('status','Card created sucessfully');
     }
 
@@ -88,7 +89,10 @@ class CardController extends Controller
      */
     public function update(UpdateCardRequest $request, Card $card)
     {
-        
+        if(Gate::denies('update',$card)){
+            return abort(404);
+        };
+
         $title =  $request->title;
         $card->title = $request->title;
         $card->slug = Str::slug($title);
@@ -98,7 +102,7 @@ class CardController extends Controller
         $card->user_id = Auth::id();
         $card->update();
 
-        return to_route('card.index')->with('status','Card updated sucessfully');
+        return to_route('card.index')->with('status', $title.' updated sucessfully');
 
     }
 
@@ -110,6 +114,7 @@ class CardController extends Controller
      */
     public function destroy(Card $card)
     {
-        //
+        $card->delete();
+        return to_route('card.index')->with('status',"Card Deleted successfully");
     }
 }

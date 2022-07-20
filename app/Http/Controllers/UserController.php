@@ -13,9 +13,14 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        //
+        $users = User::all();
+        return view('user.index',compact('users'));
     }
 
     /**
@@ -81,6 +86,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return to_route('user.index')->with('status',"User deleted successfully");
     }
 }

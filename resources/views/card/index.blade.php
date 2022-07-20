@@ -112,20 +112,29 @@
                             </p>
                             <div class="card-line my-2"></div>
                             <div class="d-flex justify-content-center ">
-                                <div class="mx-auto border-right">
-                                    <i class="bi bi-eye-fill"></i>
-                                    3
+                                <div class="mx-auto">
+                                   <a href="#" class="text-decoration-none text-black-50">
+                                    <i class="bi bi-hand-thumbs-up-fill "></i>
+                                    0
+                                   </a>
                                 </div>
                                 <div class="middle-break mx-2"></div>
                                 <div class="mx-auto">
-                                    <i class="bi bi-messenger"></i>
-                                    10
+                                    <a href="#" class="text-decoration-none text-black-50">
+                                        <i class="bi bi-eye-fill "></i>
+                                        0
+                                    </a>
                                 </div>
                             </div>
                             <div class="card-line my-2"></div>
                             <div class="d-flex justify-content-center mt-3">
                                 <a href="{{ route('card.show',$card->id) }}" class="rounded-pill px-4 btn btn-outline-secondary me-2">View</a>
-                                <a href="{{ route('card.edit',$card->id) }}" class="rounded-pill px-4 btn btn-outline-success">Edit</a>
+                                @can('update',$card)
+                                    <a href="{{ route('card.edit',$card->id) }}" class="rounded-pill px-4 btn btn-outline-success">
+                                        Edit
+                                    </a>
+                                @endcan
+
                             </div>
                         </div>
                     </div>
@@ -148,3 +157,10 @@
 
 
 @endsection
+@if (session("status"))
+<script>
+    document.addEventListener("DOMContentLoaded",()=>{
+        showToast("{{ session('status') }}")
+    })
+    </script>
+@endif

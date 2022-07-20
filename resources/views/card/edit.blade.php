@@ -20,20 +20,21 @@
                 @endif
 
                 <div class="col-lg-10">
-                    <form action="{{ route('card.update',$card->id) }}" method="post">
+                    <form action="{{ route('card.update',$card->id) }}" id="cardEditForm" method="post">
                         @csrf
                         @method('put')
+                    </form>
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" name="title" class="form-control" value="{{ old('title',$card->title) }}">
+                            <input type="text" form="cardEditForm" name="title" class="form-control" value="{{ old('title',$card->title) }}">
                         </div>
                         <div class="mb-3">
                             <label for="category" class="form-label">Category</label>
-                            <input type="text" name="category" class="form-control" value="{{ old('title',$card->category) }}">
+                            <input type="text" form="cardEditForm" name="category" class="form-control" value="{{ old('title',$card->category) }}">
                         </div>
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
-                            <textarea type="text"
+                            <textarea type="text" form="cardEditForm"
                                     name="description"
                                     rows="15"
                                     class="form-control">
@@ -41,10 +42,23 @@
                                     {{ old('description',$card->description) }}
                             </textarea>
                         </div>
-                        <div class="">
-                            <button class="btn btn-outline-success float-end">Update Card</button>
+
+
+                        <div class="d-flex justify-content-end ">
+                            <a href="{{ route('card.index') }}" class="btn btn-outline-secondary me-3">Back</a>
+
+                            <form action="{{ route('card.destroy',$card->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-outline-danger me-3">
+                                    Delete
+                                </button>
+                            </form>
+
+
+                            <button form="cardEditForm" class="btn btn-outline-success">Update Card</button>
                         </div>
-                   </form>
+
                 </div>
 
 

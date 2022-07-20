@@ -30,14 +30,22 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <h1 class="fw-bold h5 ">
+                            <h1 class="fw-bold h4 text-success">
                                 {{ $card->title }}
                             </h1>
-                            <span class="badge bg-secondary mb-2">{{ $card->category }}</span>
+                            <span class="badge bg-secondary">{{ $card->category }}</span>
 
-                            <p class="text-black-50">
+                            <p class="text-black-50 my-2">
                                 {{ $card->description }}
                             </p>
+                            <div class="mb-3 ">
+                                <p class=" mb-0 text-success fw-bold">
+                                    {{ $card->user->name }}
+                                </p>
+                                <p class="text-black-50 mb-0">
+                                    {{ $card->created_at->diffForHumans() }}
+                                </p>
+                            </div>
                             <div class="card-line my-2"></div>
                             <div class="d-flex justify-content-center ">
                                 <div class="mx-auto border-right">
