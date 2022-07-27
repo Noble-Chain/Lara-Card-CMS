@@ -36,15 +36,31 @@
                             <div class="modal-body">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Title</label>
-                                    <input type="text" class="form-control w-100" name="title">
+                                    <input type="text"
+                                            class="form-control w-100 @error('title') is-invalid @enderror"
+                                            name="title">
+                                    @error('title')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="category" class="form-label ">Category</label>
-                                    <input type="text" class="form-control w-100" name="category">
+                                    <input type="text"
+                                            class="form-control w-100 @error('title') is-invalid @enderror"
+                                            name="category">
+                                    @error('category')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <div class="mb-3">
                                     <label for="description" class="form-label">Description</label>
-                                    <textarea type="text" class="form-control w-100" rows="25" name="description"> </textarea>
+                                    <textarea type="text"
+                                                class="form-control w-100 @error('title') is-invalid @enderror"
+                                                rows="25"
+                                                name="description"> </textarea>
+                                    @error('description')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                             </div>
@@ -66,7 +82,7 @@
             <li class="nav-item me-3">
                 <a class="tab-spacing text-secondary ps-0 nav-link fs-6 text-uppercase" href="#">
                    <div class="d-flex align-items-center ">
-                        <div class="active-dot me-2"></div>
+                        <div class="status-dot active-dot me-2"></div>
                         Active
                    </div>
                 </a>
@@ -74,7 +90,7 @@
             <li class="nav-item me-3">
                 <a class="tab-spacing text-secondary ps-0 nav-link fs-6 text-uppercase" href="#">
                    <div class="d-flex align-items-center ">
-                        <div class="inactive-dot me-2"></div>
+                        <div class="status-dot inactive-dot me-2"></div>
                         Inactive
                    </div>
                 </a>
@@ -100,7 +116,7 @@
                         <div class="card-head">
                             <div class="d-flex justify-content-between">
                                 <input type="checkbox" class="square">
-                                <div class="active-dot"></div>
+                                <div class="status-dot inactive-dot"></div>
                             </div>
                         </div>
                         <div class="card-body">

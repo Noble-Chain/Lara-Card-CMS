@@ -25,6 +25,7 @@
                                     <th>{{ $user->email }}</th>
                                     <th>{{ $user->role }}</th>
                                     <th class="">
+                                        @can('delete', $user)
                                         <form action="{{ route('user.destroy',$user->id) }}" method="post">
                                             @csrf
                                             @method('delete')
@@ -32,6 +33,8 @@
                                                 <i class="bi bi-trash3 fs-5 text-danger"></i>
                                             </button>
                                         </form>
+                                        @endcan
+
                                     </th>
                                 </tr>
                             @empty

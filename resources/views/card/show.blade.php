@@ -61,7 +61,12 @@
                             <div class="card-line my-2"></div>
                             <div class="d-flex justify-content-center mt-3">
                                 <a href="{{ route('card.index') }}" class="rounded-pill px-4 btn btn-outline-secondary me-2">All Card</a>
-                                <a href="{{ route('card.edit',$card->id) }}" class="rounded-pill px-4 btn btn-outline-success">Edit</a>
+                                @can('update', $card)
+                                <a href="{{ route('card.edit',$card->id) }}"
+                                    class="rounded-pill px-4 btn btn-outline-success">
+                                    Edit
+                                </a>
+                                @endcan
                             </div>
                         </div>
                     </div>

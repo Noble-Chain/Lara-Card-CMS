@@ -32,16 +32,15 @@
 .tab-spacing{
     letter-spacing: 2px;
 }
-.active-dot{
+.status-dot{
     width: 13px;
     height: 13px;
     border-radius: 50%;
+}
+.status-dot.active-dot{
     background-color: #8bd639;
 }
 .inactive-dot{
-    width: 13px;
-    height: 13px;
-    border-radius: 50%;
     background-color: #ce0014;
 }
 .square{

@@ -22,6 +22,13 @@ let showToast = function (title){
 }
 window.showToast = showToast;
 
+let closeBtn = document.getElementById('closeBtn');
+const adsImage = document.getElementById('adsImage');
+
+closeBtn.addEventListener('click', function (){
+    adsImage.classList.add('d-none');
+})
+
 
 
 
